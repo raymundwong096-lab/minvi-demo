@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>💌 Our 1st Monthsary Invitation</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
@@ -23,6 +23,7 @@
             align-items: center;
             overflow: hidden;
             position: relative;
+            touch-action: manipulation;
         }
 
         /* floating hearts background */
@@ -63,9 +64,9 @@
             z-index: 1;
             width: 100%;
             max-width: 820px;
-            height: 94vh;
-            max-height: 700px;
-            margin: 0 16px;
+            height: 96vh;
+            max-height: 750px;
+            margin: 0 12px;
             perspective: 1200px;
         }
 
@@ -88,7 +89,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 36px 28px;
+            padding: 28px 20px;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.7s ease, transform 0.7s ease, visibility 0s 0.7s;
@@ -114,7 +115,7 @@
 
         /* scrollbar styling */
         .slide::-webkit-scrollbar {
-            width: 4px;
+            width: 3px;
         }
         .slide::-webkit-scrollbar-track {
             background: transparent;
@@ -128,15 +129,16 @@
         #slide-envelope {
             background: radial-gradient(ellipse at 40% 30%, #2a1010, #0a0404 85%);
             justify-content: center;
-            padding: 20px;
+            padding: 16px;
         }
 
         .envelope-wrapper {
             width: 100%;
-            max-width: 440px;
+            max-width: 420px;
             cursor: pointer;
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
+            touch-action: manipulation;
         }
         .envelope-wrapper:hover {
             transform: scale(1.02);
@@ -166,7 +168,6 @@
             pointer-events: none;
         }
 
-        /* envelope flap */
         .envelope-flap {
             position: absolute;
             top: -2px;
@@ -321,7 +322,7 @@
             border: none;
             color: #fff;
             font-size: 1rem;
-            padding: 10px 40px;
+            padding: 12px 40px;
             border-radius: 50px;
             font-weight: 500;
             letter-spacing: 1.5px;
@@ -329,6 +330,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 6px 24px rgba(180, 40, 40, 0.35);
             font-family: 'Inter', sans-serif;
+            touch-action: manipulation;
         }
         .letter-content .open-btn:hover {
             transform: scale(1.04);
@@ -340,7 +342,7 @@
 
         /* ---- SLIDE 2 : STORY ---- */
         #slide-story {
-            padding: 20px 16px 12px;
+            padding: 16px 12px 12px;
             background: radial-gradient(ellipse at 50% 20%, #241010, #0a0404 90%);
             justify-content: flex-start;
             align-items: center;
@@ -398,6 +400,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            flex-wrap: wrap;
         }
         .story-card .card-top .emoji-badge {
             font-size: 1.8rem;
@@ -405,10 +408,10 @@
         }
         .story-card .card-top .day-label {
             font-family: 'Playfair Display', serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #f0c8c8;
             background: rgba(200, 80, 80, 0.12);
-            padding: 2px 14px;
+            padding: 4px 14px;
             border-radius: 40px;
             letter-spacing: 0.5px;
             border: 1px solid rgba(255, 150, 150, 0.08);
@@ -433,15 +436,16 @@
             letter-spacing: 0.2px;
         }
 
+        /* ----- MEDIA PLACEHOLDER (for photos/videos) ----- */
         .story-card .card-media {
             width: 100%;
             aspect-ratio: 16 / 9;
-            background: rgba(255, 200, 200, 0.05);
+            background: rgba(255, 200, 200, 0.04);
             border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px dashed rgba(255, 180, 180, 0.10);
+            border: 2px dashed rgba(255, 180, 180, 0.15);
             color: #b08888;
             font-size: 0.85rem;
             gap: 8px;
@@ -450,18 +454,44 @@
             margin-top: 4px;
             position: relative;
             overflow: hidden;
+            transition: all 0.3s ease;
+            min-height: 120px;
+        }
+        .story-card .card-media:hover {
+            border-color: rgba(255, 180, 180, 0.4);
+            background: rgba(255, 200, 200, 0.08);
+        }
+        .story-card .card-media img,
+        .story-card .card-media video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
         }
         .story-card .card-media .media-icon {
             font-size: 2.2rem;
             opacity: 0.5;
+            z-index: 1;
         }
         .story-card .card-media .media-label {
             font-size: 0.75rem;
             letter-spacing: 0.5px;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 2px 14px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 4px 16px;
             border-radius: 40px;
             border: 1px solid rgba(255, 200, 200, 0.06);
+            z-index: 1;
+            text-align: center;
+        }
+        .story-card .card-media .placeholder-note {
+            width: 100%;
+            text-align: center;
+            font-size: 0.6rem;
+            opacity: 0.3;
+            z-index: 1;
+            letter-spacing: 0.5px;
         }
 
         .story-card .card-roses {
@@ -488,7 +518,7 @@
         }
         #slide-final h2 {
             font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
+            font-size: 2.8rem;
             color: #f5d0d0;
             text-shadow: 0 2px 30px rgba(200, 80, 80, 0.2);
             line-height: 1.2;
@@ -510,7 +540,7 @@
             border: none;
             color: #fff;
             font-size: 1.1rem;
-            padding: 12px 48px;
+            padding: 14px 48px;
             border-radius: 50px;
             font-weight: 500;
             letter-spacing: 1.5px;
@@ -519,6 +549,7 @@
             box-shadow: 0 6px 30px rgba(180, 40, 40, 0.35);
             font-family: 'Inter', sans-serif;
             margin-top: 6px;
+            touch-action: manipulation;
         }
         #slide-final .btn-rsvp:hover {
             transform: scale(1.04);
@@ -531,27 +562,28 @@
         /* ---- NAVIGATION DOTS ---- */
         .nav-dots {
             position: absolute;
-            bottom: 18px;
+            bottom: 14px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 10px;
+            gap: 12px;
             z-index: 20;
             background: rgba(0, 0, 0, 0.35);
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 40px;
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 200, 200, 0.06);
         }
         .nav-dots .dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: rgba(255, 200, 200, 0.2);
             border: none;
             cursor: pointer;
             transition: all 0.4s ease;
             padding: 0;
+            touch-action: manipulation;
         }
         .nav-dots .dot.active {
             background: #e06050;
@@ -565,12 +597,12 @@
         /* ---- RESPONSIVE ---- */
         @media (max-width: 600px) {
             .app {
-                height: 96vh;
-                max-height: 700px;
-                margin: 0 8px;
+                height: 98vh;
+                max-height: 720px;
+                margin: 0 6px;
             }
             .slide {
-                padding: 24px 16px;
+                padding: 20px 12px;
             }
             .envelope-body .heart-icon {
                 font-size: 2.2rem;
@@ -594,13 +626,13 @@
                 font-size: 3.6rem;
             }
             .nav-dots {
-                bottom: 12px;
+                bottom: 10px;
                 padding: 6px 14px;
-                gap: 8px;
+                gap: 10px;
             }
             .nav-dots .dot {
-                width: 8px;
-                height: 8px;
+                width: 10px;
+                height: 10px;
             }
             .story-card .card-title {
                 font-size: 1rem;
@@ -609,13 +641,23 @@
                 font-size: 0.82rem;
             }
             .envelope-wrapper {
-                max-width: 320px;
+                max-width: 300px;
+            }
+            .story-card .card-media {
+                min-height: 100px;
+            }
+            .letter-content .open-btn,
+            #slide-final .btn-rsvp {
+                padding: 12px 32px;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 280px;
             }
         }
 
         @media (max-width: 400px) {
             .slide {
-                padding: 16px 10px;
+                padding: 16px 8px;
             }
             .letter-content .title {
                 font-size: 1.8rem;
@@ -630,12 +672,11 @@
                 font-size: 1.8rem;
             }
             .story-card {
-                padding: 12px 14px;
+                padding: 12px 12px;
             }
-            .btn-rsvp,
-            .letter-content .open-btn {
-                padding: 8px 28px;
-                font-size: 0.9rem;
+            .story-card .card-top .day-label {
+                font-size: 0.65rem;
+                padding: 2px 10px;
             }
         }
 
@@ -660,8 +701,6 @@
         .text-gold {
             color: #e8c88a;
         }
-
-        /* rose decoration inside cards */
         .rose-decoration {
             font-size: 1.2rem;
             letter-spacing: 2px;
@@ -713,7 +752,7 @@
                         more of <span>this</span> — this beautiful, wild, wonderful thing we've found.
                     </div>
                     <div class="signature">— forever yours,</div>
-                    <div class="signature" style="font-size:2.2rem; margin-top:-6px;">asyouwish</div>
+                    <div class="signature" style="font-size:2.2rem; margin-top:-6px;">Ray</div>
                     <button class="open-btn" id="openStoryBtn">🌸 View Our Story</button>
                 </div>
             </div>
@@ -726,22 +765,29 @@
                 </div>
                 <div class="story-scroll" id="storyScroll">
 
-                    <!-- CARD 1 -->
+                    <!-- ============================================================ -->
+                    <!-- CARD 1 : Courting Month 1 -->
+                    <!-- ============================================================ -->
                     <div class="story-card">
                         <div class="card-top">
                             <span class="emoji-badge">🌹</span>
-                            <span class="day-label">Week 1 · The Beginning</span>
+                            <span class="day-label">Courting Month 1 · The Beginning</span>
                         </div>
-                        <div class="card-title">The day <span class="highlight">you</span> said yes</div>
+                        <div class="card-title">The day I asked, and you said <span class="highlight">yes</span></div>
                         <div class="card-desc">
-                            From the very first message, I knew you were different.
-                            Your words felt like music — and I couldn't stop listening.
-                            This is where <span class="text-rose">our story</span> began.
+                            From that very moment, my world turned upside down in the best way.
+                            Your "yes" echoed in my heart like a song I never wanted to end.
+                            Here's to the day we became <span class="text-rose">us</span>.
                         </div>
-                        <div class="card-media">
+                        <!-- ********************************************* -->
+                        <!-- PASTE YOUR PHOTO OR VIDEO URL BELOW          -->
+                        <!-- ********************************************* -->
+                        <div class="card-media" id="media-1">
+                            <!-- <img src="your-photo.jpg" alt="Our first photo"> -->
+                            <!-- <video src="your-video.mp4" controls></video> -->
                             <span class="media-icon">📸</span>
-                            <span class="media-label">✨ our first photo together</span>
-                            <span style="opacity:0.3;font-size:0.7rem;">(insert photo here)</span>
+                            <span class="media-label">✨ Our first photo as a couple</span>
+                            <span class="placeholder-note">(replace this placeholder with your media)</span>
                         </div>
                         <div class="card-roses">
                             <span>🌹</span><span>🌹</span><span>🌹</span>
@@ -749,22 +795,29 @@
                         </div>
                     </div>
 
-                    <!-- CARD 2 -->
+                    <!-- ============================================================ -->
+                    <!-- CARD 2 : Our Playlist -->
+                    <!-- ============================================================ -->
                     <div class="story-card">
                         <div class="card-top">
                             <span class="emoji-badge">🎶</span>
-                            <span class="day-label">Week 2 · Soundtrack of Us</span>
+                            <span class="day-label">Our Playlist · Soundtrack of Us</span>
                         </div>
-                        <div class="card-title">Every song reminds me of <span class="highlight">you</span></div>
+                        <div class="card-title">Every beat reminds me of <span class="highlight">you</span></div>
                         <div class="card-desc">
-                            From BLACKPINK to Chase Atlantic, NIKI to our late-night playlists —
-                            music became <span class="text-rose">our language</span>.
-                            You even sent me that video of you doing the poses — I still laugh every time 😂
+                            From Chase Atlantic to NIKI, BLACKPINK to our late-night jams.
+                            You even sent me that video of you doing the poses hahahah 😂
+                            It's my favorite video to watch.
                         </div>
-                        <div class="card-media">
+                        <!-- ********************************************* -->
+                        <!-- PASTE YOUR PHOTO OR VIDEO URL BELOW          -->
+                        <!-- ********************************************* -->
+                        <div class="card-media" id="media-2">
+                            <!-- <img src="your-photo.jpg" alt="Our shared vibes"> -->
+                            <!-- <video src="your-video.mp4" controls></video> -->
                             <span class="media-icon">🎵</span>
-                            <span class="media-label">🎧 our shared vibes</span>
-                            <span style="opacity:0.3;font-size:0.7rem;">(insert video / audio)</span>
+                            <span class="media-label">🎧 Our shared vibes</span>
+                            <span class="placeholder-note">(replace this placeholder with your media)</span>
                         </div>
                         <div class="card-roses">
                             <span>🌹</span><span>🌹</span><span>🌹</span>
@@ -772,23 +825,29 @@
                         </div>
                     </div>
 
-                    <!-- CARD 3 -->
+                    <!-- ============================================================ -->
+                    <!-- CARD 3 : Running to You -->
+                    <!-- ============================================================ -->
                     <div class="story-card">
                         <div class="card-top">
                             <span class="emoji-badge">🏃</span>
-                            <span class="day-label">Week 3 · Moving Together</span>
+                            <span class="day-label">Running to You · Distance</span>
                         </div>
                         <div class="card-title"><span class="highlight">9.13 km</span> · 12,956 steps · 2h 6m</div>
                         <div class="card-desc">
-                            You ran, I cheered. You walked, I walked beside you (virtually).
-                            Every step you take, I'm right there with you —
-                            pushing, believing, loving.
-                            <span class="text-rose">"asyouwish"</span> — and I always will.
+                            Every step you take, I'm right there with you.
+                            Pushing, believing, loving.
+                            No matter the distance, my heart runs to <span class="text-rose">you</span>.
                         </div>
-                        <div class="card-media">
-                            <span class="media-icon">📊</span>
-                            <span class="media-label">🏅 Strava · 9.13 km</span>
-                            <span style="opacity:0.3;font-size:0.7rem;">(insert run photo)</span>
+                        <!-- ********************************************* -->
+                        <!-- PASTE YOUR PHOTO OR VIDEO URL BELOW          -->
+                        <!-- ********************************************* -->
+                        <div class="card-media" id="media-3">
+                            <!-- <img src="your-photo.jpg" alt="Strava achievement"> -->
+                            <!-- <video src="your-video.mp4" controls></video> -->
+                            <span class="media-icon">🏅</span>
+                            <span class="media-label">Your Strava achievement</span>
+                            <span class="placeholder-note">(replace this placeholder with your media)</span>
                         </div>
                         <div class="card-roses">
                             <span>🌹</span><span>🌹</span><span>🌹</span>
@@ -796,23 +855,29 @@
                         </div>
                     </div>
 
-                    <!-- CARD 4 -->
+                    <!-- ============================================================ -->
+                    <!-- CARD 4 : Birthday Magic -->
+                    <!-- ============================================================ -->
                     <div class="story-card">
                         <div class="card-top">
                             <span class="emoji-badge">🎂</span>
-                            <span class="day-label">Week 3 · Birthday Wishes</span>
+                            <span class="day-label">Birthday Magic · Wishes</span>
                         </div>
                         <div class="card-title">Happy birthday, <span class="highlight">my love</span>!</div>
                         <div class="card-desc">
                             "I love you all the best — I love you!"
-                            That day, I wished on every star that you'd always feel
+                            I wished on every star that you'd always feel
                             this loved, this seen, this <span class="text-rose">cherished</span>.
-                            Because you are.
                         </div>
-                        <div class="card-media">
+                        <!-- ********************************************* -->
+                        <!-- PASTE YOUR PHOTO OR VIDEO URL BELOW          -->
+                        <!-- ********************************************* -->
+                        <div class="card-media" id="media-4">
+                            <!-- <img src="your-photo.jpg" alt="Birthday glow"> -->
+                            <!-- <video src="your-video.mp4" controls></video> -->
                             <span class="media-icon">🎈</span>
-                            <span class="media-label">🎂 birthday magic</span>
-                            <span style="opacity:0.3;font-size:0.7rem;">(insert birthday photo)</span>
+                            <span class="media-label">Your birthday glow</span>
+                            <span class="placeholder-note">(replace this placeholder with your media)</span>
                         </div>
                         <div class="card-roses">
                             <span>🌹</span><span>🌹</span><span>🌹</span>
@@ -820,23 +885,29 @@
                         </div>
                     </div>
 
-                    <!-- CARD 5 -->
+                    <!-- ============================================================ -->
+                    <!-- CARD 5 : The Ful Life -->
+                    <!-- ============================================================ -->
                     <div class="story-card">
                         <div class="card-top">
                             <span class="emoji-badge">💫</span>
-                            <span class="day-label">Week 4 · A Ful Life</span>
+                            <span class="day-label">The Ful Life · July 11</span>
                         </div>
                         <div class="card-title"><span class="highlight">"HAVE BEEN A FUL LIFE"</span></div>
                         <div class="card-desc">
-                            July 11 — a day that marked not just time,
-                            but the beginning of <span class="text-rose">everything</span>.
-                            With you, life feels full. Complete. Like every page
-                            of my story was leading me to you.
+                            July 11. 40 40 41. 819-35. 73 82 90. TTL 114. 41. 194. 90.
+                            Our numbers align perfectly, just like our hearts.
+                            With you, life feels complete. Ful. Free. <span class="text-rose">Forever</span>.
                         </div>
-                        <div class="card-media">
+                        <!-- ********************************************* -->
+                        <!-- PASTE YOUR PHOTO OR VIDEO URL BELOW          -->
+                        <!-- ********************************************* -->
+                        <div class="card-media" id="media-5">
+                            <!-- <img src="your-photo.jpg" alt="Our magic numbers"> -->
+                            <!-- <video src="your-video.mp4" controls></video> -->
                             <span class="media-icon">📖</span>
-                            <span class="media-label">📅 July 11 · the ful life</span>
-                            <span style="opacity:0.3;font-size:0.7rem;">(insert memory photo)</span>
+                            <span class="media-label">Our magic numbers</span>
+                            <span class="placeholder-note">(replace this placeholder with your media)</span>
                         </div>
                         <div class="card-roses">
                             <span>🌹</span><span>🌹</span><span>🌹</span>
@@ -844,24 +915,29 @@
                         </div>
                     </div>
 
-                    <!-- CARD 6 -->
+                    <!-- ============================================================ -->
+                    <!-- CARD 6 : One Month Later -->
+                    <!-- ============================================================ -->
                     <div class="story-card">
                         <div class="card-top">
                             <span class="emoji-badge">💌</span>
-                            <span class="day-label">Today · 1 Month</span>
+                            <span class="day-label">One Month · Forever</span>
                         </div>
                         <div class="card-title">30 days of <span class="highlight">us</span></div>
                         <div class="card-desc">
-                            From 1 to 30, from 40 to 194 —
-                            numbers don't matter. What matters is
-                            <span class="text-rose">you and me</span>.
-                            Every day, I fall deeper. Every night, I dream of more.
-                            This is only the beginning.
+                            From the first "hello" to this very moment,
+                            every day with you is a dream I never want to wake up from.
+                            This is only the beginning of our <span class="text-rose">forever</span>.
                         </div>
-                        <div class="card-media">
+                        <!-- ********************************************* -->
+                        <!-- PASTE YOUR PHOTO OR VIDEO URL BELOW          -->
+                        <!-- ********************************************* -->
+                        <div class="card-media" id="media-6">
+                            <!-- <img src="your-photo.jpg" alt="Our favorite memory"> -->
+                            <!-- <video src="your-video.mp4" controls></video> -->
                             <span class="media-icon">💕</span>
-                            <span class="media-label">✨ 1 month · forever to go</span>
-                            <span style="opacity:0.3;font-size:0.7rem;">(insert our favorite photo)</span>
+                            <span class="media-label">Our favorite memory</span>
+                            <span class="placeholder-note">(replace this placeholder with your media)</span>
                         </div>
                         <div class="card-roses">
                             <span>🌹</span><span>🌹</span><span>🌹</span>
@@ -889,7 +965,7 @@
                 <button class="btn-rsvp" id="rsvpBtn">💖 Yes, I'll be there!</button>
                 <div style="margin-top:14px; font-size:0.8rem; color:#b08888; letter-spacing:1px; opacity:0.6; display:flex; gap:12px; align-items:center; flex-wrap:wrap; justify-content:center;">
                     <span>🌹</span>
-                    <span>with all my love, asyouwish</span>
+                    <span>with all my love, Ray</span>
                     <span>🌹</span>
                 </div>
             </div>
@@ -933,15 +1009,12 @@
         function goToSlide(index, skipEnvelope = false) {
             if (isTransitioning || index === currentSlide) return;
             if (index < 0 || index >= slides.length) return;
-            // if trying to go to story before envelope is opened, ignore
             if (index === 1 && !skipEnvelope && !letterVisible) {
-                // but if we're coming from envelope click, let it through
                 return;
             }
 
             isTransitioning = true;
 
-            // remove active from all slides
             slides.forEach((s, i) => {
                 s.classList.remove('active', 'exit');
                 if (i !== index) {
@@ -949,18 +1022,15 @@
                 }
             });
 
-            // activate target
             slides[index].classList.add('active');
             slides[index].classList.remove('exit');
 
-            // update dots
             dots.forEach((d, i) => {
                 d.classList.toggle('active', i === index);
             });
 
             currentSlide = index;
 
-            // if going to story, ensure we scroll to top
             if (index === 1) {
                 const scrollEl = document.getElementById('storyScroll');
                 if (scrollEl) scrollEl.scrollTop = 0;
@@ -971,12 +1041,10 @@
             }, 700);
         }
 
-        // dot clicks
         dots.forEach((dot) => {
             dot.addEventListener('click', () => {
                 const idx = parseInt(dot.dataset.slide);
                 if (idx === 1 && !letterVisible) {
-                    // if envelope not opened, open it first
                     openEnvelope();
                     setTimeout(() => { goToSlide(1, true); }, 800);
                     return;
@@ -998,15 +1066,12 @@
             if (letterVisible) return;
             letterVisible = true;
             envelope.classList.add('open');
-            // show letter
             setTimeout(() => {
                 letterContent.classList.add('show');
-                // update envelope wrapper to not be clickable
                 envelopeWrapper.style.cursor = 'default';
             }, 400);
         }
 
-        // click envelope to open
         envelopeWrapper.addEventListener('click', (e) => {
             e.stopPropagation();
             if (!letterVisible) {
@@ -1014,7 +1079,6 @@
             }
         });
 
-        // "View Our Story" button
         openStoryBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             if (!letterVisible) {
@@ -1028,7 +1092,7 @@
         // ============================================================
         // 4. RSVP BUTTON
         // ============================================================
-        document.getElementById('rsvpBtn').addEventListener('click', () => {
+        document.getElementById('rsvpBtn').addEventListener('click', function() {
             const messages = [
                 '💖 You just made my heart skip a beat!',
                 '🌸 I knew you\'d say yes! See you soon, love!',
@@ -1036,15 +1100,12 @@
                 '🌹 You\'re the best thing that ever happened to me.'
             ];
             const msg = messages[Math.floor(Math.random() * messages.length)];
-            // replace button with celebration
-            const btn = document.getElementById('rsvpBtn');
-            btn.textContent = '🎉 ' + msg;
-            btn.style.background = 'linear-gradient(135deg, #2d8a4e, #1a5c33)';
-            btn.style.boxShadow = '0 6px 30px rgba(45, 138, 78, 0.4)';
-            btn.style.cursor = 'default';
-            btn.disabled = true;
+            this.textContent = '🎉 ' + msg;
+            this.style.background = 'linear-gradient(135deg, #2d8a4e, #1a5c33)';
+            this.style.boxShadow = '0 6px 30px rgba(45, 138, 78, 0.4)';
+            this.style.cursor = 'default';
+            this.disabled = true;
 
-            // confetti effect (simple)
             for (let i = 0; i < 18; i++) {
                 setTimeout(() => {
                     const el = document.createElement('span');
@@ -1059,7 +1120,8 @@
                     el.style.opacity = '1';
                     document.body.appendChild(el);
                     requestAnimationFrame(() => {
-                        el.style.transform = `translateY(${70 + Math.random() * 40}vh) rotate(${360 + Math.random() * 720}deg) scale(${0.6 + Math.random() * 0.8})`;
+                        el.style.transform =
+                            `translateY(${70 + Math.random() * 40}vh) rotate(${360 + Math.random() * 720}deg) scale(${0.6 + Math.random() * 0.8})`;
                         el.style.opacity = '0';
                     });
                     setTimeout(() => el.remove(), 3500);
@@ -1068,7 +1130,7 @@
         });
 
         // ============================================================
-        // 5. KEYBOARD NAV (optional)
+        // 5. KEYBOARD NAV
         // ============================================================
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
@@ -1088,7 +1150,6 @@
         // ============================================================
         // 6. AUTO-OPEN ENVELOPE ON FIRST VISIT (gentle)
         // ============================================================
-        // wait a beat then show a subtle pulse on envelope
         setTimeout(() => {
             if (!letterVisible) {
                 envelopeWrapper.style.animation = 'pulseHint 2s ease-in-out 2';
@@ -1111,7 +1172,7 @@
             observer.observe(slides[1], { attributes: true, attributeFilter: ['class'] });
         }
 
-        console.log('💌 Happy 1st Monthsary, love! — asyouwish');
+        console.log('💌 Happy 1st Monthsary, love! — Ray');
     </script>
 
 </body>
